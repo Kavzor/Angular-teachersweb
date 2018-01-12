@@ -1,0 +1,7 @@
+.invalid:not(:placeholder-shown) {
+  background-color: hsla(1, 70%, 60%, 0.3);
+}
+
+input:not(.invalid){
+  background-color: hsla(97, 70%, 60%, 0.3);
+}

@@ -1,0 +1,8 @@
+.card a[role='button'], .fa {
+  cursor: pointer;
+}
+
+.fa{
+  padding: 15px;
+  margin: -15px;
+}

@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-header">
+      <h3 class="pb-3">Room status</h3>
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a role="button" class="nav-link"
+            [class.active]="isEditState == false"
+            (click)="toggleEditState(false)">
+              Room
+          </a>
+        </li>
+        <li class="nav-item">
+          <a role="button" class="nav-link"
+            [class.active]="isEditState"
+            (click)="toggleEditState(true)">
+              Edit
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="isEditState == false" class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item">
+          Name: {{ room.name }}
+        </li>
+        <li class="list-group-item">
+          Room id: {{ room.id }}
+        </li>
+        <li class="list-group-item">
+          Session: {{ room.session | sessionToText }}
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="isEditState" class="card-body form-group col-7">
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          [(ngModel)]="room.name"
+          placeholder="name" class="form-control" type="text"/>
+      </div>
+      <div class="form-group">
+        <label>Session</label>
+        <div class="mt-2">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label
+                (click)="setSession(true)"
+                [class.active]="room.session"
+                class="btn btn-info">
+                  <input type="radio"> Open
+              </label>
+              <label
+                (click)="setSession(false)"
+                [class.active]="!room.session"
+                class="btn btn-info active">
+                  <input type="radio"> Close
+              </label>
+          </div>
+        </div>
+      </div>
+      <label class="text-info">{{ status }}</label>
+    </div>
+  </div>
